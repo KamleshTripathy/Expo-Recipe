@@ -5,7 +5,7 @@ Welcome to TastyByte, your go-to recipe companion! This React Native application
 ## SCREENSHOTS
 
 ### 1.Splash Screen
-![splashscreen](C:\Users\HP\OneDrive\Desktop\New folder\project\screenshots\splashscreen.jpg)
+![splashscreen](https://github.com/KamleshTripathy/Expo-Recipe/screenshots/splashscreen.jpg)
 
 
 ### 2.Sign UP Page
