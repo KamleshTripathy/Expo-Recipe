@@ -37,5 +37,5 @@ Welcome to TastyByte, your go-to recipe companion! This React Native application
 
 
 ### 9.Favorite Screen
-![Screenshot (52)](https://github.com/KamleshTripathy/mern_pixaro/assets/134593046/00796f88-d27d-4688-841d-6f7bd5d3468d)
+![favoritescreen](https://github.com/KamleshTripathy/Expo-Recipe/blob/main/screenshots/favoritescreen.jpg)
 
