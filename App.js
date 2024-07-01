@@ -1,20 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import "react-native-gesture-handler";
+import React from "react";
+import AppNavigator from "./navigator/AppNavigator";
+import { AuthProvider } from "./context/authContext";
+import { FavoriteProvider } from "./context/favoriteContext";
+import { DarkModeProvider } from "./context/darkmodeContext";
 
-export default function App() {
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <AuthProvider>
+      <FavoriteProvider>
+        <DarkModeProvider>
+          <AppNavigator />
+        </DarkModeProvider>
+      </FavoriteProvider>
+    </AuthProvider>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
