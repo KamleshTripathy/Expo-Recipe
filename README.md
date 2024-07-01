@@ -5,7 +5,7 @@ Welcome to TastyByte, your go-to recipe companion! This React Native application
 ## SCREENSHOTS
 
 ### 1.Splash Screen
-![splashscreen](https://github.com/KamleshTripathy/Expo-Recipe/blob/main/screenshots/splashscreen.jpg){: width="200px"}
+![splashscreen](https://github.com/KamleshTripathy/Expo-Recipe/blob/main/screenshots/splashscreen.jpg?raw=true&s=200)
 
 
 ### 2.Landing Screen
