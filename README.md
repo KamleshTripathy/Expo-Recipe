@@ -1,6 +1,6 @@
 # TastyByte
 
-Welcome to TastyByte, your go-to recipe companion! This React Native application allows you to explore a diverse collection of delicious recipes conveniently from your mobile device. Whether you're a cooking enthusiast or simply looking for culinary inspiration, TastyByte offers a seamless user experience with features like categorized browsing, advanced search, and the ability to save your favorite recipes. Built using Expo, React Navigation, and integrated with a Node.js backend, TastyByte ensures smooth performance across platforms. Explore, cook, and enjoy with TastyByte!
+Welcome to TastyByte, your go-to recipe companion! This React Native application allows you to explore a diverse collection of delicious recipes conveniently from your mobile device. Whether you're a cooking enthusiast or simply looking for culinary inspiration, TastyByte offers a seamless user experience with features like categorized browsing, advanced search, and the ability to save your favorite recipes. Built using Expo, and React Navigation, TastyByte ensures smooth performance across platforms. Explore, cook, and enjoy with TastyByte!
 
 ## SCREENSHOTS
 
@@ -8,22 +8,34 @@ Welcome to TastyByte, your go-to recipe companion! This React Native application
 ![splashscreen](https://github.com/KamleshTripathy/Expo-Recipe/blob/main/screenshots/splashscreen.jpg)
 
 
-### 2.Sign UP Page
-![Screenshot (48)](https://github.com/KamleshTripathy/mern_pixaro/assets/134593046/e62af41d-722b-4b9b-92ad-27612c31d753)
+### 2.Landing Screen
+![landingscreen](https://github.com/KamleshTripathy/Expo-Recipe/blob/main/screenshots/landingscreen.jpg)
 
 
-### 3.Sign In Page
-![Screenshot (49)](https://github.com/KamleshTripathy/mern_pixaro/assets/134593046/029b4947-7869-4835-95be-9cb7ddc1d004)
+### 3.Home Screen
+![homescreen](https://github.com/KamleshTripathy/Expo-Recipe/blob/main/screenshots/homescreen.jpg)
 
 
-### 4.All Products Page
-![Screenshot (50)](https://github.com/KamleshTripathy/mern_pixaro/assets/134593046/4c26c8d7-d462-4e21-a560-e9b77f63d3a3)
+### 4.Login Screen
+![loginscreen](https://github.com/KamleshTripathy/Expo-Recipe/blob/main/screenshots/loginscreen.jpg)
 
 
-### 5.Cart Page
-![Screenshot (51)](https://github.com/KamleshTripathy/mern_pixaro/assets/134593046/565ac180-96c8-4729-a86a-147ac276925c)
+### 5.Register Screen
+![registerscreen](https://github.com/KamleshTripathy/Expo-Recipe/blob/main/screenshots/registerscreen.jpg)
 
-### 6.Checkout Page
+
+### 6.All Recipe Screen
+![allrecipescreen](https://github.com/KamleshTripathy/Expo-Recipe/blob/main/screenshots/allrecipescreen.jpg)
+
+
+### 7.Profile Screen
+![profilescreen](https://github.com/KamleshTripathy/Expo-Recipe/blob/main/screenshots/profilescreen.jpg)
+
+
+### 8.Details Screen
+![detailsscreen](https://github.com/KamleshTripathy/Expo-Recipe/blob/main/screenshots/detailsscreen.jpg)
+
+
+### 9.Favorite Screen
 ![Screenshot (52)](https://github.com/KamleshTripathy/mern_pixaro/assets/134593046/00796f88-d27d-4688-841d-6f7bd5d3468d)
 
-![Screenshot (53)](https://github.com/KamleshTripathy/mern_pixaro/assets/134593046/ce5c64ea-56ff-403c-9b4f-66222b1c123f)
