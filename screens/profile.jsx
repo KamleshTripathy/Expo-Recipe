@@ -24,12 +24,9 @@ const ProfileScreen = ({ navigation }) => {
 
   console.log(authContext);
   const { user, isLoggedIn, logout } = authContext;
+  console.log(user);
 
   const { isDarkMode, toggleDarkMode } = useDarkMode();
-
-  const handleLogout = () => {
-    logout();
-  };
 
   const handleAddRecipe = () => {
     // Add your add recipe logic here
@@ -63,17 +60,25 @@ const ProfileScreen = ({ navigation }) => {
                 <Title
                   style={[
                     styles.title,
-                    { marginTop: 15, marginBottom: 5 },
+                    { marginTop: 35, marginBottom: 5 },
                     isDarkMode && styles.darkModeTitle,
                   ]}
                 >
-                  Hi!!{user.firstName}
+                  Hi!!{user.name}
                 </Title>
               </View>
             </View>
           </View>
 
           <View style={styles.menuWrapper}>
+            <TouchableRipple
+              onPress={() => navigation.navigate("Edit", { userId: user.id })}
+            >
+              <View style={styles.menuItem}>
+                <Icon name="pencil-outline" color="green" size={25} />
+                <Text style={styles.menuItemText}>Edit Profile</Text>
+              </View>
+            </TouchableRipple>
             <TouchableRipple onPress={handleSubmit}>
               <View style={styles.menuItem}>
                 <Icon name="heart-outline" color="green" size={25} />
@@ -121,7 +126,7 @@ const ProfileScreen = ({ navigation }) => {
             </TouchableOpacity>
             <TouchableOpacity
               style={[styles.button, { backgroundColor: "green" }]}
-              onPress={handleLogout}
+              onPress={logout}
             >
               <Icon name="logout" size={20} color="#fff" style={styles.icon} />
               <Text style={styles.buttonText}>Logout</Text>
@@ -228,9 +233,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  menuWrapper: {
-    marginTop: 10,
-  },
   menuItem: {
     flexDirection: "row",
     paddingVertical: 15,
@@ -266,7 +268,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   darkModeContainer: {
-    backgroundColor: "black",
+    backgroundColor: "#181818",
   },
   darkModeTitle: {
     color: "#fff",

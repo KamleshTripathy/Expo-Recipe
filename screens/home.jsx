@@ -54,6 +54,7 @@ const recipes = [
     time: "20 minutes",
     servings: "4",
     category: "Appetizers",
+    price: "200",
   },
   {
     id: "2",
@@ -67,6 +68,7 @@ const recipes = [
     time: "30 minutes",
     servings: "24 cookies",
     category: "Desserts",
+    price: "350",
   },
   {
     id: "3",
@@ -80,6 +82,7 @@ const recipes = [
     time: "40 minutes",
     servings: "4",
     category: "Appetizers",
+    price: "250",
   },
   {
     id: "4",
@@ -93,6 +96,7 @@ const recipes = [
     time: "25 minutes",
     servings: "4",
     category: "Main Courses",
+    price: "750",
   },
   {
     id: "5",
@@ -105,6 +109,7 @@ const recipes = [
     time: "5 minutes",
     servings: "1",
     category: "Drinks",
+    price: "150",
   },
 ];
 
@@ -162,7 +167,10 @@ const HomeScreen = ({ navigation }) => {
 
   const renderRecipe = ({ item }) => (
     <TouchableOpacity
-      style={styles.recipeContainer}
+      style={[
+        styles.recipeContainer,
+        isDarkMode && styles.darkmodecatContainer,
+      ]}
       onPress={() => navigation.navigate("FoodDetails", { recipe: item })}
     >
       <Image source={{ uri: item.image }} style={styles.recipeImage} />
@@ -235,7 +243,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   darkModeContainer: {
-    backgroundColor: "black",
+    backgroundColor: "#181818",
   },
   container: {
     flex: 1,
@@ -303,6 +311,9 @@ const styles = StyleSheet.create({
   },
   darkModeRecipeTitle: {
     color: "#fff",
+  },
+  darkmodecatContainer: {
+    backgroundColor: "#333",
   },
 });
 

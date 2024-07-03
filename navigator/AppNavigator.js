@@ -15,6 +15,9 @@ import ProfileScreen from "../screens/profile";
 import FoodDetails from "../screens/HomeRecipe";
 import FavoriteRecipesScreen from "../screens/yourFavorites";
 import ShowMoreScreen from "../screens/showMore";
+import EditProfileScreen from "../screens/edit";
+import CartScreen from "../screens/cart";
+import CartIconWithBadge from "../components/customCart";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -44,12 +47,12 @@ const TabNavigator = () => (
         let iconName;
 
         if (route.name === "Home") {
-          iconName = "home";
+          return <Ionicons name="home" size={size} color={color} />;
         } else if (route.name === "Profile") {
-          iconName = "person";
+          return <Ionicons name="person" size={size} color={color} />;
+        } else if (route.name === "Cart") {
+          return <CartIconWithBadge color={color} size={size} />;
         }
-
-        return <Ionicons name={iconName} size={size} color={color} />;
       },
       tabBarActiveTintColor: "green",
       tabBarInactiveTintColor: "gray",
@@ -66,6 +69,7 @@ const TabNavigator = () => (
         headerTitleAlign: "Left",
       })}
     />
+    <Tab.Screen name="Cart" component={CartScreen} options={getScreenOptions} />
     <Tab.Screen
       name="Profile"
       component={ProfileScreen}
@@ -112,6 +116,11 @@ const AppNavigator = () => {
         <Stack.Screen
           name="AllRecipes"
           component={ShowMoreScreen}
+          options={getScreenOptions}
+        />
+        <Stack.Screen
+          name="Edit"
+          component={EditProfileScreen}
           options={getScreenOptions}
         />
         <Stack.Screen

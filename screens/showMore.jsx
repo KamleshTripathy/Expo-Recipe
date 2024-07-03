@@ -66,7 +66,11 @@ const ShowMoreScreen = ({ route, navigation }) => {
     return (
       <TouchableOpacity
         key={recipe.id}
-        style={[styles.card, { width: cardWidth }]}
+        style={[
+          styles.card,
+          { width: cardWidth },
+          isDarkMode && styles.darkmodeCard,
+        ]}
         onPress={() => navigation.navigate("FoodDetails", { recipe })}
       >
         <Image source={{ uri: recipe.image }} style={styles.recipeImage} />
@@ -179,7 +183,7 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
   darkModeContainer: {
-    backgroundColor: "black",
+    backgroundColor: "#181818",
   },
   toggleButtonContainer: {
     flexDirection: "row",
@@ -263,6 +267,9 @@ const styles = StyleSheet.create({
   },
   darkModeRDesc: {
     color: "#fff",
+  },
+  darkmodeCard: {
+    backgroundColor: "#333",
   },
 });
 

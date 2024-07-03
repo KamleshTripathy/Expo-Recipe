@@ -1,19 +1,55 @@
 import axios from "axios";
+import { VITE_API } from "@env";
 
-const BASE_URL = "https://dummyjson.com";
-
-const api = axios.create({
-  baseURL: BASE_URL,
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
-
-export const loginUser = async (username, password) => {
-  try {
-    const response = await api.post("/auth/login", { username, password });
-    return response.data; // Assuming your API returns user data upon successful login
-  } catch (error) {
-    throw error; // Handle errors as needed
+class UserApiService {
+  constructor() {
+    this.api = VITE_API;
   }
-};
+
+  async addUSer(user) {
+    try {
+      const res = await axios.post(`${this.api}/user/signup`, user);
+      console.log(res.data);
+      return { data: res.data, status: true };
+    } catch (error) {
+      console.log(error);
+      return { status: false, message: error?.response?.data?.message };
+    }
+  }
+
+  async loginUser(user) {
+    try {
+      const res = await axios.post(`${this.api}/user/signin`, user);
+      console.log(res.data);
+      return { data: res.data, status: true };
+    } catch (error) {
+      console.log(error);
+      return { status: false, message: error?.response?.data?.message };
+    }
+  }
+
+  async updateUser(id, user) {
+    try {
+      const res = await axios.put(`${this.api}/user/${id}`, user);
+      console.log(res.data);
+      return { status: true, data: res.data };
+    } catch (error) {
+      console.log(error);
+      return { status: false, error };
+    }
+  }
+
+  async userDetails(id) {
+    try {
+      const res = await axios.get(`${this.api}/user/${id}`);
+      console.log(res.data[0]);
+      return { data: res.data[0], status: true };
+    } catch (error) {
+      console.log(error);
+      return { status: false, error };
+    }
+  }
+}
+
+const userApiService = new UserApiService();
+export default userApiService;

@@ -1,38 +1,50 @@
-//import { useEffect } from "react";
-import { createContext, useContext, useState } from "react";
-//import { decodeToken } from "react-jwt";
-import { loginUser } from "../Api/userApi";
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { decodeToken } from "react-jwt";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const AuthContext = createContext(null);
 
 export const AuthProvider = (props) => {
+  const [token, setToken] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
 
-  const login = async (username, password) => {
-    try {
-      const userData = await loginUser(username, password);
-      setUser(userData);
-      setIsLoggedIn(true);
-      return true;
-    } catch (error) {
-      console.error("Login Error:", error);
-      return false;
-    }
+  useEffect(() => {
+    const fetchToken = async () => {
+      const jwttoken = await AsyncStorage.getItem("pptoken");
+      console.log("Fetched token from storage:", jwttoken);
+      if (jwttoken) {
+        setToken(jwttoken);
+        setIsLoggedIn(true);
+        const decodedData = decodeToken(jwttoken);
+        setUser(decodedData.user);
+      }
+    };
+
+    fetchToken();
+  }, [token]);
+
+  const login = async (token) => {
+    await AsyncStorage.setItem("pptoken", token);
+    console.log("Token saved to storage:", token);
+    setToken(token);
+    setIsLoggedIn(true);
   };
-  const logout = () => {
-    setUser(null);
+
+  const logout = async () => {
+    await AsyncStorage.removeItem("pptoken");
+    console.log("Token removed from storage");
+    setToken(null);
     setIsLoggedIn(false);
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, login, logout, user }}>
+    <AuthContext.Provider value={{ token, isLoggedIn, user, login, logout }}>
       {props.children}
     </AuthContext.Provider>
   );
 };
 
 export const useAuth = () => {
-  const authContext = useContext(AuthContext);
-  return authContext;
+  return useContext(AuthContext);
 };

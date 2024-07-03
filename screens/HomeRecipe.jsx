@@ -12,22 +12,33 @@ import { useContext } from "react";
 import { FavoriteContext } from "../context/favoriteContext";
 import { AuthContext } from "../context/authContext";
 import { useDarkMode } from "../context/darkmodeContext";
+import { CartContext } from "../context/cartContext";
 
 const FoodDetails = ({ navigation }) => {
   const route = useRoute();
   const { recipe } = route.params;
   const { favoriteRecipes, addToFavorites, removeFromFavorites } =
     useContext(FavoriteContext);
+  const { cartRecipes, addToCart } = useContext(CartContext);
   const { isLoggedIn } = useContext(AuthContext);
   const { isDarkMode } = useDarkMode();
 
   const isFavorite = favoriteRecipes.some((item) => item.id === recipe.id);
+
+  const isCart = cartRecipes.some((item) => item.id === recipe.id);
 
   const handleAddToFavorite = () => {
     if (isFavorite) {
       removeFromFavorites(recipe);
     } else {
       addToFavorites(recipe);
+    }
+  };
+  const handleAddToCart = () => {
+    if (isCart) {
+      navigation.navigate("Cart");
+    } else {
+      addToCart(recipe);
     }
   };
   const handleLoginRequired = () => {
@@ -75,23 +86,41 @@ const FoodDetails = ({ navigation }) => {
           </Text>
           {recipe.servings}
         </Text>
+        <Text style={[styles.price, isDarkMode && styles.darkModePrice]}>
+          <Text style={[styles.label, isDarkMode && styles.darkModeLabel]}>
+            Price:{" "}
+          </Text>
+          {recipe.price}
+        </Text>
       </View>
       {isLoggedIn ? (
-        <TouchableOpacity
-          style={styles.favoriteButton}
-          onPress={handleAddToFavorite}
-        >
-          <Text style={styles.favoriteButtonText}>
-            {isFavorite ? "Remove from Favorite" : "Add to Favorite"}
-          </Text>
-        </TouchableOpacity>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            style={styles.favoriteButton}
+            onPress={handleAddToFavorite}
+          >
+            <Text style={styles.favoriteButtonText}>
+              {isFavorite ? "Remove from Favorite" : "Add to Favorite"}
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.cartButton} onPress={handleAddToCart}>
+            <Text style={styles.cartButtonText}>
+              {isCart ? "Go to Cart" : "Add to Cart"}
+            </Text>
+          </TouchableOpacity>
+        </View>
       ) : (
-        <TouchableOpacity
-          style={styles.favoriteButton}
-          onPress={handleLoginRequired}
-        >
-          <Text style={styles.favoriteButtonText}>Login to Favorite</Text>
-        </TouchableOpacity>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            style={styles.favoriteButton}
+            onPress={handleLoginRequired}
+          >
+            <Text style={styles.favoriteButtonText}>Login to Favorite</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.cartButton}>
+            <Text style={styles.cartButtonText}>Add to Cart</Text>
+          </TouchableOpacity>
+        </View>
       )}
     </ScrollView>
   );
@@ -104,7 +133,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   darkModeContainer: {
-    backgroundColor: "black",
+    backgroundColor: "#181818",
   },
   errorText: {
     textAlign: "center",
@@ -145,6 +174,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 10,
   },
+  price: {
+    fontSize: 16,
+    marginBottom: 10,
+  },
   label: {
     fontWeight: "bold",
   },
@@ -154,7 +187,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderRadius: 5,
     alignItems: "center",
-    marginTop: 20,
+    flex: 1,
+    marginRight: 10,
   },
   favoriteButtonText: {
     color: "#fff",
@@ -168,6 +202,24 @@ const styles = StyleSheet.create({
   darkModetime: { color: "#fff" },
   darkModeServe: { color: "#fff" },
   darkModeLabel: { color: "#fff" },
+  darkModePrice: { color: "#fff" },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 20,
+  },
+  cartButton: {
+    backgroundColor: "green",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    alignItems: "center",
+    flex: 1,
+  },
+  cartButtonText: {
+    color: "#fff",
+    fontSize: 18,
+  },
 });
 
 export default FoodDetails;

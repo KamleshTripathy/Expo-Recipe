@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   darkModeContainer: {
-    backgroundColor: "black",
+    backgroundColor: "#181818",
   },
 });
 

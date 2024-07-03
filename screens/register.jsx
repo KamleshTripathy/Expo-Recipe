@@ -19,15 +19,8 @@ const RegisterScreen = ({ navigation }) => {
       <Text style={[styles.header, isDarkMode && styles.darkModeheader]}>
         Register
       </Text>
-      {/* <TextInput style={styles.input} placeholder="Username" /> */}
       <CustomTextInput placeholder="Username" />
-      {/* <TextInput style={styles.input} placeholder="Password" secureTextEntry /> */}
       <CustomTextInput placeholder="Password" secureTextEntry />
-      {/* <TextInput
-        style={styles.input}
-        placeholder="Confirm Password"
-        secureTextEntry
-      /> */}
       <CustomTextInput placeholder="Confirm Password" secureTextEntry />
 
       <TouchableOpacity
@@ -88,7 +81,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   darkModeContainer: {
-    backgroundColor: "black",
+    backgroundColor: "#181818",
   },
   darkModeheader: {
     color: "#fff",
