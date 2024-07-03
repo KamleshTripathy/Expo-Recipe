@@ -39,3 +39,11 @@ Welcome to TastyByte, your go-to recipe companion! This React Native application
 ### 9.Favorite Screen
 ![favoritescreen](https://github.com/KamleshTripathy/Expo-Recipe/blob/main/screenshots/favoritescreen.jpg)
 
+
+### 10.Edit Screen
+![editscreen](https://github.com/KamleshTripathy/Expo-Recipe/blob/main/screenshots/editscreen.jpg)
+
+
+### 11.Cart Screen
+![cartscreen](https://github.com/KamleshTripathy/Expo-Recipe/blob/main/screenshots/cartscreen.jpg)
+
